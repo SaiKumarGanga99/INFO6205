@@ -56,11 +56,22 @@ public class InsertionSort<X extends Comparable<X>> extends SortWithHelper<X> {
      * @param to   the index of the first element not to sort
      */
     public void sort(X[] xs, int from, int to) {
-        final Helper<X> helper = getHelper();
 
         // FIXME
-        // END 
+        for(int d=from+1;d<to;d++) insert(d,from,xs);
     }
+    public void insert(int d,int from,X[] xs){
+        final Helper<X> helper = getHelper();
+        for(int j=d-1;j>=from;j--){
+            if(helper.compare(xs,j,j+1)>0){
+                helper.swap(xs,j,j+1);
+            } else {
+                break;
+            }
+        }
+    }
+        // END 
+
 
     public static final String DESCRIPTION = "Insertion sort";
 
